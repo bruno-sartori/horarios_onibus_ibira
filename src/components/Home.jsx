@@ -1,121 +1,120 @@
 import 'Css/home.less';
+import { withStyles } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import Typography from '@material-ui/core/Typography';
 import React, { Component } from 'react';
-import Qualidades from 'Components/assets/Qualidades';
-import Card from 'Components/assets/Card';
-import LinkButton from 'Components/form/LinkButton';
-import { Link } from 'react-router-dom';
-import Carousel from 'Components/assets/Carousel';
-import CarouselMobile from 'Components/assets/CarouselMobile';
+
+
+const drawerWidth = 240;
+
+const styles = theme => ({
+	root: {
+		flexGrow: 1,
+	},
+	appFrame: {
+		height: '100vh',
+		zIndex: 1,
+		overflow: 'hidden',
+		position: 'relative',
+		display: 'flex',
+		width: '100%',
+	},
+	appBar: {
+		position: 'absolute',
+		transition: theme.transitions.create(['margin', 'width'], {
+			easing: theme.transitions.easing.sharp,
+			duration: theme.transitions.duration.leavingScreen,
+		}),
+	},
+	appBarShift: {
+		width: `calc(100% - ${drawerWidth}px)`,
+		transition: theme.transitions.create(['margin', 'width'], {
+			easing: theme.transitions.easing.easeOut,
+			duration: theme.transitions.duration.enteringScreen,
+		}),
+	},
+	'appBarShift-left': {
+		marginLeft: drawerWidth,
+	},
+	'appBarShift-right': {
+		marginRight: drawerWidth,
+	},
+	menuButton: {
+		marginLeft: 12,
+		marginRight: 20,
+	},
+	hide: {
+		display: 'none',
+	},
+	drawerPaper: {
+		position: 'relative',
+		width: drawerWidth,
+	},
+	drawerHeader: {
+		display: 'flex',
+		alignItems: 'center',
+		justifyContent: 'flex-end',
+		padding: '0 8px',
+		...theme.mixins.toolbar,
+	},
+	content: {
+		flexGrow: 1,
+		backgroundColor: theme.palette.background.default,
+		padding: theme.spacing.unit * 3,
+		transition: theme.transitions.create('margin', {
+			easing: theme.transitions.easing.sharp,
+			duration: theme.transitions.duration.leavingScreen,
+		}),
+	},
+	'content-left': {
+		marginLeft: -drawerWidth,
+	},
+	'content-right': {
+		marginRight: -drawerWidth,
+	},
+	contentShift: {
+		transition: theme.transitions.create('margin', {
+			easing: theme.transitions.easing.easeOut,
+			duration: theme.transitions.duration.enteringScreen,
+		}),
+	},
+	'contentShift-left': {
+		marginLeft: 0,
+	},
+	'contentShift-right': {
+		marginRight: 0,
+	},
+});
+
 
 class Home extends Component {
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			teste: 'teste'
+		};
+	}
+
 	render() {
-		this.isMobile = false;
-
-		if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-			this.isMobile = true;
-		}
-
-		const valorFibraReal = process.env.REACT_APP_A_PARTIR_FIBRA.split(',')[0];
-		const valorFibraCentavo = `,${process.env.REACT_APP_A_PARTIR_FIBRA.split(',')[1]}`;
-
-		const valorRadioReal = process.env.REACT_APP_A_PARTIR_RADIO.split(',')[0];
-		const valorRadioCentavo = `,${process.env.REACT_APP_A_PARTIR_RADIO.split(',')[1]}`;
-
+		const { classes } = this.props;
 		return (
-			<div>
-				{ (this.isMobile === true) ? <CarouselMobile /> : <Carousel />}
-
-				<div className="container-fluid cards-planos-container" id="cards-planos-container" style={{ paddingTop: '15px' }}>
-					<div className="row">
-						<div className="col-md-1 d-none d-md-block" />
-						<div className="col-xs-12 col-md-10">
-							<div className="row">
-								<div className="col-12" style={{ marginTop: '40px' }}>
-									<h1 className="color-white bold extra-large-size" style={{ padding: '0 15px' }}>Internet Banda Larga<br />Fibra Óptica ou Rádio</h1>
-								</div>
-							</div>
-							<div className="row" style={{ marginTop: '15px' }}>
-								{ /* CARD PLANOS FIBRA */}
-								<div className="col-sm-12 col-md-4">
-									<Card img="fibra" title="Fibra Óptica">
-										<div className="container">
-											<div className="row">
-												<div className="col-12">
-													<span className="around-value">à partir de</span>
-													<h4 className="value"><span className="min">R$</span><span className="max">{valorFibraReal}</span><span className="min">{valorFibraCentavo}</span></h4>
-													<span className="around-value">por mês</span>
-												</div>
-											</div>
-											<div className="row" style={{ marginTop: '20px' }}>
-												<div className="col-12">
-													<span className="color-gray bold-italic medium-size">Planos de até 100Mb</span>
-												</div>
-											</div>
-											<div className="row" style={{ marginTop: '30px' }}>
-												<div className="col-12">
-													<Link className="link-button medium only-border gray" to="/planos-fibra"><span className="italic medium-size">conheça os planos</span></Link>
-												</div>
-											</div>
-										</div>
-									</Card>
-								</div>
-
-								{ /* CARD PLANOS RADIO */ }
-								<div className="col-sm-12 col-md-4">
-									<Card img="radio" title="Rádio">
-										<div className="container">
-											<div className="row">
-												<div className="col-12">
-													<span className="around-value">à partir de</span>
-													<h4 className="value"><span className="min">R$</span><span className="max">{valorRadioReal}</span><span className="min">{valorRadioCentavo}</span></h4>
-													<span className="around-value">por mês</span>
-												</div>
-											</div>
-											<div className="row" style={{ marginTop: '20px' }}>
-												<div className="col-12">
-													<span className="color-gray bold-italic medium-size">Planos de até 4Mb</span>
-												</div>
-											</div>
-											<div className="row" style={{ marginTop: '30px' }}>
-												<div className="col-12">
-													<Link className="link-button medium only-border gray" to="/planos-radio"><span className="italic medium-size">conheça os planos</span></Link>
-												</div>
-											</div>
-										</div>
-									</Card>
-								</div>
-
-								{ /* CARD PLANOS RADIO */ }
-								<div className="col-sm-12 col-md-4">
-									<Card img="dedicado" title="Corporativo">
-										<div className="container">
-											<div className="row">
-												<div className="col-12" style={{ marginTop: '30px' }}>
-													<br /><br />
-													<span className="around-value" style={{ textAlign: 'center' }}>Link dedicado e transporte de dados com segurança.</span>
-												</div>
-											</div>
-											<div className="row" style={{ marginTop: '80px' }}>
-												<div className="col-12">
-													<Link className="link-button medium only-border gray" to="/corporativo">
-														<span className="italic medium-size">conheça os planos</span>
-													</Link>
-												</div>
-											</div>
-										</div>
-									</Card>
-								</div>
-							</div>
-						</div>
-						<div className="col-md-1 d-none d-md-block">
-							<LinkButton className="bordless showme" href="#qualidades-container" style={{ position: 'absolute', bottom: '15px' }}><span className="fa fa-chevron-down fa-3x" /></LinkButton>
-						</div>
-					</div>
-				</div>
-				<Qualidades />
-			</div>
+			<main
+				className={classNames(classes.content, classes['content-left'], {
+					[classes.contentShift]: open,
+					[classes['contentShift-left']]: open,
+				})}
+			>
+				<div className={classes.drawerHeader} />
+				<Typography>{this.state.teste}</Typography>
+			</main>
 		);
 	}
 }
 
-export default Home;
+Home.propTypes = {
+	classes: PropTypes.object.isRequired
+};
+
+export default withStyles(styles, { withTheme: true })(Home);

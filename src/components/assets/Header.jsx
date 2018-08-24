@@ -1,36 +1,162 @@
-import 'Css/header.less';
 import React from 'react';
-import LinkButton from 'Components/form/LinkButton';
-import { isAndroid, isIOS } from 'react-device-detect';
-import Navbar from './Navbar';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import { withStyles } from '@material-ui/core/styles';
+import Drawer from '@material-ui/core/Drawer';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import List from '@material-ui/core/List';
+import Typography from '@material-ui/core/Typography';
+import Divider from '@material-ui/core/Divider';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 
-const getMap = (isAndroid)
-	? 'geo:-21.0830673,-49.2386976'
-	: (isIOS)
-		? 'http://maps.apple.com/?ll=-21.0830673,-49.2386976'
-		: 'https://www.google.com.br/maps/place/JDNet+Telecom/@-21.0830673,-49.2386976,17z/data=!3m1!4b1!4m5!3m4!1s0x94bc302ef85478fb:0x254bc1bc82aad5c4!8m2!3d-21.0830673!4d-49.2365089?hl=pt-BR';
+const drawerWidth = 240;
 
-const Header = function() {
-	return (
-		<div className="container-fluid" id="header">
-			<div className="row header-bar d-none d-md-flex" style={{ padding: '8px' }}>
-				<div className="col-1" />
-				<div className="col-3">
-					<LinkButton href="http://www.speedtest.net/" target="_blank" rel="noopener noreferrer" style={{ padding: '3px' }} className="botao-header">Teste de Velocidade</LinkButton>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<LinkButton href="http://187.49.240.50/central/" target="_blank" rel="noopener noreferrer" style={{ padding: '3px' }} className="botao-header">Central do Assinante</LinkButton>
-				</div>
-				<div className="col-2" />
-				<div className="col-5" style={{ textAlign: 'right', paddingRight: '10px' }}>
-					<a href="tel:0800-771-0299" className="color-white light"><span className="fa fa-phone" />&nbsp;0800-771-0299</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<a href={getMap} target="_blank" className="color-white light"><span className="fa fa-map-marker" />&nbsp;&nbsp;R. Coronel Jonas G. Gonzaga, 1353-A, Ibirá</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<a href="https://www.instagram.com/jdnettelecom/" target="_blank" rel="noopener noreferrer" className="color-white light"><span className="fa fa-instagram" /></a>&nbsp;&nbsp;
-					<a href="https://www.facebook.com/jdnettelecom/" target="_blank" rel="noopener noreferrer" className="color-white light"><span className="fa fa-facebook" /></a>
-				</div>
-				<div className="col-1" />
+const styles = theme => ({
+	root: {
+		flexGrow: 1,
+	},
+	appFrame: {
+		height: '100vh',
+		zIndex: 1,
+		overflow: 'hidden',
+		position: 'relative',
+		display: 'flex',
+		width: '100%',
+	},
+	appBar: {
+		position: 'absolute',
+		transition: theme.transitions.create(['margin', 'width'], {
+			easing: theme.transitions.easing.sharp,
+			duration: theme.transitions.duration.leavingScreen,
+		}),
+	},
+	appBarShift: {
+		width: `calc(100% - ${drawerWidth}px)`,
+		transition: theme.transitions.create(['margin', 'width'], {
+			easing: theme.transitions.easing.easeOut,
+			duration: theme.transitions.duration.enteringScreen,
+		}),
+	},
+	'appBarShift-left': {
+		marginLeft: drawerWidth,
+	},
+	'appBarShift-right': {
+		marginRight: drawerWidth,
+	},
+	menuButton: {
+		marginLeft: 12,
+		marginRight: 20,
+	},
+	hide: {
+		display: 'none',
+	},
+	drawerPaper: {
+		position: 'relative',
+		width: drawerWidth,
+	},
+	drawerHeader: {
+		display: 'flex',
+		alignItems: 'center',
+		justifyContent: 'flex-end',
+		padding: '0 8px',
+		...theme.mixins.toolbar,
+	},
+	content: {
+		flexGrow: 1,
+		backgroundColor: theme.palette.background.default,
+		padding: theme.spacing.unit * 3,
+		transition: theme.transitions.create('margin', {
+			easing: theme.transitions.easing.sharp,
+			duration: theme.transitions.duration.leavingScreen,
+		}),
+	},
+	'content-left': {
+		marginLeft: -drawerWidth,
+	},
+	'content-right': {
+		marginRight: -drawerWidth,
+	},
+	contentShift: {
+		transition: theme.transitions.create('margin', {
+			easing: theme.transitions.easing.easeOut,
+			duration: theme.transitions.duration.enteringScreen,
+		}),
+	},
+	'contentShift-left': {
+		marginLeft: 0,
+	},
+	'contentShift-right': {
+		marginRight: 0,
+	},
+});
+
+class PersistentDrawer extends React.Component {
+	state = {
+		open: true
+	};
+
+	handleDrawerOpen = () => {
+		this.setState({ open: true });
+	};
+
+	handleDrawerClose = () => {
+		this.setState({ open: false });
+	};
+
+	render() {
+		const { classes } = this.props;
+		const { open } = this.state;
+
+		return (
+			<div>
+				<AppBar
+					className={classNames(classes.appBar, {
+						[classes.appBarShift]: open,
+						[classes['appBarShift-left']]: open,
+					})}
+				>
+					<Toolbar disableGutters={!open}>
+						<IconButton
+							color="inherit"
+							aria-label="Open drawer"
+							onClick={this.handleDrawerOpen}
+							className={classNames(classes.menuButton, open && classes.hide)}
+						>
+							<MenuIcon />
+						</IconButton>
+						<Typography variant="title" color="inherit" noWrap>
+							Persistent drawer
+						</Typography>
+					</Toolbar>
+				</AppBar>
+				<Drawer
+					variant="persistent"
+					anchor="left"
+					open={open}
+					classes={{
+						paper: classes.drawerPaper,
+					}}
+				>
+					<div className={classes.drawerHeader}>
+						<IconButton onClick={this.handleDrawerClose}>
+							<ChevronLeftIcon />
+						</IconButton>
+					</div>
+					<Divider />
+					<List />
+					<Divider />
+					<List />
+				</Drawer>
 			</div>
-			<Navbar />
-		</div>
-	);
+		);
+	}
+}
+
+PersistentDrawer.propTypes = {
+	classes: PropTypes.object.isRequired
 };
 
-export default Header;
+export default withStyles(styles, { withTheme: true })(PersistentDrawer);
