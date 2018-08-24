@@ -1,0 +1,48 @@
+@import 'main.less';
+
+.image-top {
+	.bold;
+	.color-white;
+	.extra-large-size;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	height: 316px;
+
+	&.nossa-historia {
+		background-image: url('../images/banners/a_jdnet.jpg');
+		@media @smartphones {
+			background-image: url('../images/banners/a_jdnet_mobile.jpg');
+		}
+	}
+	&.area-cobertura {
+		background-image: url('../images/banners/area_cobertura.jpg');
+		@media @smartphones {
+			background-image: url('../images/banners/area_cobertura_mobile.jpg');
+		}
+	}
+	&.fibra {
+		background-image: url('../images/banners/fibra.jpg');
+		@media @smartphones {
+			background-image: url('../images/banners/planos_mobile.jpg');
+		}
+	}
+	&.radio {
+		background-image: url('../images/banners/radio.jpg');
+		@media @smartphones {
+			background-image: url('../images/banners/planos_mobile.jpg');
+		}
+	}
+	&.servicos {
+		background-image: url('../images/banners/corporativo.jpg');
+		@media @smartphones {
+			background-image: url('../images/banners/corporativo_mobile.jpg');
+		}
+	}
+	&.fale_conosco {
+		background-image: url('../images/banners/fale_conosco.jpg');
+		@media @smartphones {
+			background-image: url('../images/banners/fale_conosco_mobile.jpg');
+		}
+	}
+}

@@ -1,0 +1,44 @@
+@import 'main.less';
+
+.nossa-historia {
+
+	p {
+		font-size: 14px;
+		.color-gray;
+
+		a {
+			.bold-italic;
+			.color-gray;
+		}
+	}
+
+	img {
+
+		@media @smartphones {
+			padding: 50px 0 0 0;
+		}
+	}
+
+	.valores {
+		@media @smartphones {
+			h1 {
+				text-align: center;
+			}
+			p {
+				padding-bottom: 50px;
+				text-align: center;
+			}
+		}
+
+		@media screen and (orientation: landscape) {
+			margin-bottom: 20px;
+			h1 {
+				text-align: center;
+			}
+			p {
+				padding-bottom: 20px;
+				text-align: center;
+			}
+		}
+	}
+}

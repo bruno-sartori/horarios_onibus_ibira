@@ -1,0 +1,107 @@
+{
+	"parser": "babel-eslint",
+	"plugins": [
+		"react"
+	],
+	"settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": "./config/webpack.config.dev.js"
+      }
+    }
+  },
+	"parserOptions": {
+		"ecmaVersion": 6,
+		"sourceType": "module",
+		"ecmaFeatures": {
+			"jsx": true,
+			"experimentalObjectRestSpread": true
+		}
+	},
+	"env": {
+		"es6":     true,
+		"browser": true,
+		"node":    true,
+		"mocha":   true
+	},
+	"extends": [
+		"eslint:recommended",
+		"plugin:react/recommended",
+		"airbnb"
+	],
+	"rules": {
+		"no-bitwise": "off",
+		"no-undef": "off",
+		"react/no-find-dom-node": "off",
+		"jsx-a11y/label-has-for": "off",
+		"react/jsx-indent": [2, "tab"],
+		"react/jsx-indent-props": [2, "tab"],
+		"react/forbid-prop-types": "off",
+		"object-curly-newline": "off",
+		"jsx-a11y/label-has-for": "off",
+		"jsx-a11y/no-static-element-interactions": ["error", { "handlers": [] }],
+		"jsx-a11y/click-events-have-key-events": "off",
+		"jsx-a11y/no-autofocus": "off",
+		"no-useless-escape": "off",
+		"jsx-a11y/anchor-is-valid": "off",
+		"no-confusing-arrow": "off",
+		"react/no-danger": "off",
+		"no-void": "off",
+		"no-tabs": "off",
+		"indent": ["error", "tab", {"SwitchCase": 1, "MemberExpression": 0}],
+		"global-require": "off",
+		"no-nested-ternary": "off",
+    "import/no-dynamic-require": "off",
+    "strict": [ 2, "safe" ],
+		"no-underscore-dangle": "off",
+		"no-param-reassign": "off",
+		"no-debugger": 2,
+		"import/no-extraneous-dependencies": [
+      "error", {
+        "devDependencies": true
+      }
+    ],
+		"brace-style": [
+			2,
+			"1tbs",
+			{ "allowSingleLine": true }
+		],
+		"no-trailing-spaces": 2,
+		"keyword-spacing":    2,
+		"space-before-function-paren": [
+			2,
+			"never"
+		],
+		"spaced-comment": [2, "always" ],
+		"vars-on-top": 2,
+		"no-undef": 1,
+		"no-undefined": 2,
+		"no-restricted-globals": "off",
+		"comma-dangle": ["error", "only-multiline"],
+		"quotes": [ 2, "single" ],
+		"semi": [ 2, "always" ],
+		"guard-for-in": 2,
+		"no-eval": 2,
+		"no-with": 2,
+		"valid-typeof": 2,
+		"no-unused-vars": 2,
+		"no-continue": 1,
+		"no-extra-semi": 1,
+		"no-unreachable": 1,
+		"no-unused-expressions": 1,
+		"no-magic-numbers": "off",
+		"func-names": "off",
+    "no-plusplus": "off",
+    "no-extend-native": "off",
+    "no-continue": "off",
+    "no-loop-func": "off",
+    "no-restricted-syntax": "off",
+    "no-mixed-operators": "off",
+		"max-len": ["error", 300],
+		"react/prefer-es6-class": 1
+	},
+	"globals": {
+		"socket": true,
+		"$": true
+	}
+}

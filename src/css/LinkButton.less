@@ -1,0 +1,106 @@
+@import "main.less";
+
+.link-button {
+	background-color: @gray;
+	text-decoration: none !important;
+	cursor: pointer;
+	transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+	.roundedCorners(30px);
+	.italic;
+
+	&.small {
+		padding: 4px 30px;
+	}
+
+	&.large {
+		padding: 15px 40px;
+		.large-size;
+	}
+
+	&.circle {
+		padding: 10px;
+	}
+
+	&.medium {
+		.medium-size;
+		.bold;
+		padding: 10px 30px;
+	}
+
+	&.only-border {
+		background: transparent;
+
+		&.light-blue {
+			border: 2px solid @light-blue;
+			color: @light-blue;
+		}
+
+		&.white {
+			border: 2px solid @white;
+			color: @white;
+		}
+
+		&.white-soft {
+			border: 1px solid @white;
+			color: @white;
+		}
+
+		&.gray {
+			border: 2px solid @gray;
+			color: @gray;
+		}
+
+		&.dark-blue-soft {
+			border: 1px solid @dark-blue;
+			color: @dark-blue;
+		}
+	}
+
+	&:hover {
+		border-color: @orange !important;
+		background-color: @orange !important;
+		color: @white !important;
+	}
+
+	&.bordless {
+		background: transparent;
+		border: none;
+		color: @white !important;
+
+		&:hover {
+			border: none !important;
+			background-color: transparent !important;
+			color: @orange !important;
+			padding: 0;
+
+			@media @smartphones {
+				padding: 15px 40px !important;
+			}
+		}
+
+		&.dark-blue {
+			color: @dark-blue !important;
+		}
+	}
+
+	&.bordless-header {
+		background: transparent;
+		border: none;
+		color: @white !important;
+
+		&:hover {
+			border: none !important;
+			background-color: transparent !important;
+			color: @orange !important;
+			padding: 0;
+
+			@media @smartphones {
+				padding: 0 !important;
+			}
+		}
+
+		&.dark-blue {
+			color: @dark-blue !important;
+		}
+	}
+}

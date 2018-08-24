@@ -1,0 +1,47 @@
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+@import "main.less";
+
+.banner-container {
+	position: relative;
+	width: 100%;
+	height: 100vh;
+	overflow: hidden;
+}
+
+.banner-image {
+	width: 100vw;
+	height: 150vh; // this should be dynamic, right now it's fixed based on a min max offset
+	background-size: cover;
+
+	@media @smartphones {
+		background-position: top !important;
+	}
+	background-position: center;
+
+}
+
+.banner-children {
+	position: absolute;
+	bottom: 135px;
+	left: 0;
+	right: 0;
+	color: @white;
+	display: flex;
+	//align-items: center;
+	//justify-content: center;
+}
+
+.hideme {
+	will-change: opacity;
+}
+
+.cards-planos-container {
+	background-color: @dark-blue;
+}
+
+.title {
+	@media @smartphones {
+		.align-center;
+	}
+}

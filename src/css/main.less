@@ -1,0 +1,208 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import '~font-awesome/less/font-awesome.less';
+
+// Main Colors
+@orange: #f36f21;
+@gray: #8a8a8a;
+@dark-blue: #0a4595;
+@light-blue: #36cfe7;
+@white: #fff;
+/* /Main Colors */
+
+@smartphones: ~"only screen and (max-width: 668px)";
+
+body {
+	background-color: @dark-blue;
+}
+
+section {
+	overflow-y: hidden !important;
+}
+
+.color-orange {
+	color: @orange !important;
+	&:hover {
+		color: @orange !important;
+	}
+}
+.color-gray {
+	color: @gray;
+	&:hover {
+		color: @gray;
+	}
+}
+.color-dark-blue {
+	color: @dark-blue;
+	&:hover {
+		color: @dark-blue;
+	}
+}
+.color-light-blue {
+	color: @light-blue;
+	&:hover {
+		color: light-blue;
+	}
+}
+.color-white {
+	color: @white;
+	&:hover {
+		color: @white;
+	}
+}
+
+.background-orange {
+	background-color: @orange;
+}
+.background-gray {
+	background-color: @gray;
+}
+.background-dark-blue {
+	background-color: @dark-blue;
+}
+.background-light-blue {
+	background-color: @light-blue;
+}
+.background-white {
+	background-color: @white !important;
+}
+
+// Fonts
+@font-face {
+	font-family: Ubuntu;
+	src: url('../fonts/Ubuntu-Regular.ttf');
+}
+
+@font-face {
+	font-family: UbuntuMedium;
+	src: url('../fonts/Ubuntu-Medium.ttf');
+}
+
+@font-face {
+	font-family: UbuntuItalic;
+	src: url('../fonts/Ubuntu-Italic.ttf');
+}
+
+@font-face {
+	font-family: UbuntuBold;
+	src: url('../fonts/Ubuntu-Bold.ttf');
+}
+
+@font-face {
+	font-family: UbuntuBoldItalic;
+	src: url('../fonts/Ubuntu-BoldItalic.ttf');
+}
+
+@font-face {
+	font-family: UbuntuLight;
+	src: url('../fonts/Ubuntu-Light.ttf');
+}
+
+@font-face {
+	font-family: UbuntuLightItalic;
+	src: url('../fonts/Ubuntu-LightItalic.ttf');
+}
+
+.default-font {
+	font-family: Ubuntu, Helvetica, Arial, sans-serif;
+}
+
+.italic {
+	font-family: UbuntuItalic, Helvetica, Arial, sans-serif;
+}
+
+.medium {
+	font-family: UbuntuMedium, Helvetica, Arial, sans-serif;
+}
+
+.bold {
+	font-family: UbuntuBold, Helvetica, Arial, sans-serif;
+}
+
+.bold-italic {
+	font-family: UbuntuBoldItalic, Helvetica, Arial, sans-serif;
+}
+
+.light {
+	font-family: UbuntuLight, Helvetica, Arial, sans-serif;
+}
+
+.light-italic {
+	font-family: UbuntuLightItalic, Helvetica, Arial, sans-serif;
+}
+// /Fonts
+
+// Sizes
+.small-size {
+	font-size: 10px;
+}
+.default-size {
+	font-size: 13px;
+}
+.medium-size {
+	font-size: 18px
+}
+
+.large-size {
+	font-size: 23px;
+}
+.extra-large-size {
+	font-size: 43px;
+}
+// /Sizes
+
+// Alignment
+.align-right {
+	text-align: right;
+}
+.align-center {
+	text-align: center;
+}
+// /Alignment
+
+* {
+	.default-font;
+	.default-size;
+}
+
+a {
+	&:hover {
+		color: inherit;
+	}
+}
+
+.only-landscape {
+	display: none;
+	@media screen and (orientation:landscape) {
+		display: block;
+	}
+}
+
+.only-portrait {
+	display: none;
+	@media screen and (orientation:portrait) {
+		display: block;
+	}
+}
+
+
+// Shape
+.roundedCorners(@radius: 20px) {
+ -webkit-border-radius: @radius !important;
+ -moz-border-radius: @radius !important;
+ border-radius: @radius !important;
+}
+
+.transition (@transition) {
+	-webkit-transition: @transition;
+	-moz-transition:    @transition;
+	-ms-transition:     @transition;
+	-o-transition:      @transition;
+}
+.transform(@string){
+	-webkit-transform: @string;
+	-moz-transform: 	 @string;
+	-ms-transform: 		 @string;
+	-o-transform: 		 @string;
+}
+
+// /Shape

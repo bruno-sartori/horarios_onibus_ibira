@@ -1,0 +1,70 @@
+@import 'main.less';
+
+.footer {
+	.background-orange;
+	padding-top: 50px;
+	padding-bottom: 50px;
+
+	h3 {
+		.color-white;
+		.medium-size;
+		.bold;
+	}
+
+	hr {
+		border-top: 1px solid #fff;
+	}
+
+	h1 {
+		.color-white;
+		.bold;
+		font-size: 32px;
+	}
+
+
+	img {
+		padding-top: 5px;
+		padding-right: 5px;
+	}
+
+	.coluna {
+		&.center {
+			border-right: 1px solid #fff;
+
+			@media @smartphones {
+				text-align: center;
+				padding-top: 30px;
+				margin-top: 10px;
+				border-right: none;
+				border-bottom: 1px solid #fff;
+				padding-bottom: 10px;
+				margin-left: 20px;
+				margin-right: 20px;
+			}
+		}
+
+		&.right {
+			text-align: right;
+			@media @smartphones {
+				text-align: center;
+				margin-top: 10px;
+				padding-top: 30px;
+				border-right: none;
+				border-bottom: 1px solid #fff;
+				padding-bottom: 10px;
+				margin-left: 20px;
+				margin-right: 20px;
+			}
+		}
+
+
+			a {
+				.color-white;
+				line-height: 2;
+				&:hover {
+					text-decoration: none;
+					font-weight: bolder !important;
+				}
+			}
+	}
+}
